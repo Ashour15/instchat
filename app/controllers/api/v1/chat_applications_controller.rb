@@ -1,7 +1,7 @@
 class Api::V1::ChatApplicationsController < ApplicationController
   before_action :set_chat_application, only: [:show, :update, :destroy]
 
-  #GET /api/v1/chat_applications/:token
+  #GET /api/v1/chat_applications
   def index 
     chat_applications = ChatApplication.all
     render json: chat_applications, status: :ok
