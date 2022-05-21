@@ -4,6 +4,9 @@ class Chat < ApplicationRecord
   has_many :messages, dependent: :destroy
  
   #validations--------------------------------------------
-  validates :number, presence: true
   validates_uniqueness_of :number, scope: :chat_application_id
+
+  def as_json(options)
+    super({:only => [:number]})
+  end
 end
