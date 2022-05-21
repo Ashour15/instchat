@@ -1,11 +1,10 @@
 class Api::V1::ChatsController < ApplicationController
+  before_action :set_chat_application
   before_action :set_chat, only: [:show]
-  before_action :set_chat_application, only: [:create]
 
   # GET /api/v1/chat_applications/:chat_application_token/chats
   def index
-    chats = Chat.all
-    render json: chats, status: :ok
+    render json: @chat_application.chats, status: :ok
   end
 
   # GET /api/v1/chat_applications/:chat_application_token/chats/:number
@@ -28,7 +27,7 @@ class Api::V1::ChatsController < ApplicationController
   private
 
   def set_chat
-    @chat = Chat.find_by!(number: params[:number], chat_application_token: params[:chat_application_token])
+    @chat = @chat_application.chats.find_by!(number: params[:number])
   end
 
   def set_chat_number(chat)

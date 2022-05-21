@@ -4,4 +4,8 @@ class Message < ApplicationRecord
  
   #validations--------------------------------------------
   validates :body, presence: true
+
+  def as_json(options)
+    super({:only => [:body, :number]})
+  end
 end
