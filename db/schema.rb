@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_21_204301) do
+ActiveRecord::Schema.define(version: 2022_05_22_085049) do
 
   create_table "chat_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -27,7 +27,8 @@ ActiveRecord::Schema.define(version: 2022_05_21_204301) do
     t.integer "messages_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chat_application_id"], name: "fk_rails_7cfe0dfcb4"
+    t.index ["chat_application_id", "number"], name: "index_chats_on_chat_application_id_and_number", unique: true
+    t.index ["chat_application_id"], name: "index_chats_on_chat_application_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -36,7 +37,8 @@ ActiveRecord::Schema.define(version: 2022_05_21_204301) do
     t.bigint "chat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chat_id"], name: "fk_rails_0f670de7ba"
+    t.index ["chat_id", "number"], name: "index_messages_on_chat_id_and_number", unique: true
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
   add_foreign_key "chats", "chat_applications"
