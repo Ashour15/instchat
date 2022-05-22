@@ -93,4 +93,4 @@ curl -X POST \
 ## TODO
 - [ ] Write unit test
 - [ ] Catch all 404 requests and return it as aa easier human readable format
-- [ ] Pagiante all index actions
+- [ ] Paginate all index actions
