@@ -8,6 +8,7 @@ module Searchable
    def as_indexed_json(_options = {})
      as_json(only: %i[body])
    end
+   
    settings settings_attributes do
      mappings dynamic: false do
        indexes :body, type: :text, analyzer: :autocomplete
