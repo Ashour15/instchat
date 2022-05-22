@@ -16,6 +16,7 @@ class Api::V1::ChatApplicationsController < ApplicationController
   def create
     chat_application = ChatApplication.new(chat_application_params)
     if chat_application.save
+      update_chats_count_later(chat_application.id)
       render json: chat_application, status: :created
     else
       render json: chat_application.errors, status: :unprocessable_entity
@@ -45,5 +46,9 @@ class Api::V1::ChatApplicationsController < ApplicationController
 
   def set_chat_application
     @chat_application = ChatApplication.find_by_token(params[:token])
+  end
+
+  def update_chats_count_later(id)
+    ChatsCountWorker.perform_in(1.hours, id)
   end
 end
