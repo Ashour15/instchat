@@ -14,6 +14,9 @@ gem 'puma', '~> 3.11'
 gem 'redis', '~> 4.0'
 
 gem 'sidekiq', '~> 6.4.2'
+
+gem 'elasticsearch-model', '7.2.1'
+gem 'elasticsearch-rails', '7.2.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

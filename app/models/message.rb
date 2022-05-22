@@ -1,4 +1,7 @@
 class Message < ApplicationRecord
+  include Searchable
+  Message.import force: true
+
   #relationships------------------------------------------
   belongs_to :chat
  

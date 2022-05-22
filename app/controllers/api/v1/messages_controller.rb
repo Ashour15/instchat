@@ -4,7 +4,13 @@ class Api::V1::MessagesController < ApplicationController
   before_action :set_message , only: [:show]
 
   def index
-    render json: @chat.messages, status: :ok
+    messages = []
+    if params[:query].present?
+      messages = @chat.messages.search(params[:query]).records
+    else
+      messages = @chat.messages
+    end
+    render json: messages, status: :ok
   end
 
   def show
