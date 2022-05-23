@@ -90,6 +90,12 @@ curl -X POST \
   }
 ```
 
+Full API Documentation:
+
+- [Chat Application](https://github.com/Ashour15/instchat/blob/main/README/API/chat_application.md)
+- [Chat](https://github.com/Ashour15/instchat/blob/main/README/API/chat.md)
+- [Message](https://github.com/Ashour15/instchat/blob/main/README/API/message.md)
+
 ## TODO
 - [ ] Write unit test
 - [ ] Catch all 404 requests and return it as aa easier human readable format
